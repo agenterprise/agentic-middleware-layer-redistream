@@ -1,0 +1,8 @@
+[dependency-groups]
+middlewarelayer = [
+    "redis>=4.0.0"
+]
+
+
+
+

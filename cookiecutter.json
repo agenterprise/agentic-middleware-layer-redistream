@@ -1,0 +1,9 @@
+{
+    "templates": {
+        "entitylayer": {
+            "path": "./middlewarelayer",
+            "title": "Agentic Middleware Layer",
+            "description": "A cookiecutter template for an agentic middleware layer"
+        }
+    }
+}
