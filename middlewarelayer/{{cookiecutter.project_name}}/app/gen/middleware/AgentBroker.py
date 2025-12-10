@@ -14,7 +14,7 @@ from functools import singledispatchmethod
 
 from app.gen.domainmodel.agent import AbstractAgent
 from app.gen.domainmodel.baseentity import BaseInputEntity, BaseOutputEntity
-
+from app.gen.config.settings_middleware import MiddlewareSettings
 logger = logging.getLogger(__name__)
 
 class ExceptionBroadcastError(Exception):
@@ -24,6 +24,7 @@ class ExceptionBroadcastError(Exception):
 
 class AgentBroker(BaseModel):
     """Example of a custom agent extension."""
+    settings:MiddlewareSettings = None
     model_config = ConfigDict(arbitrary_types_allowed=True,)
     r: ClassVar =  redis.Redis(host='localhost', port=6379, db=0) # Declare r as a ClassVar for class-level usage
     retry_config: ClassVar = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
