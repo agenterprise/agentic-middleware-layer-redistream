@@ -26,7 +26,7 @@ class AgentBroker(BaseModel):
     """Example of a custom agent extension."""
     settings:MiddlewareSettings = None
     model_config = ConfigDict(arbitrary_types_allowed=True,)
-    r: ClassVar =  redis.Redis(host='localhost', port=6379, db=0) # Declare r as a ClassVar for class-level usage
+    r: ClassVar =  None
     retry_config: ClassVar = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
     heartbeat_rate: ClassVar = 30
     channels: List[Channel] = []
@@ -38,6 +38,7 @@ class AgentBroker(BaseModel):
  
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        redis.Redis(host=self.settings.redishost, port=self.settings.redisport, db=0) # Declare r as a ClassVar for class-level usage
         self.listener_registry_thread = threading.Thread(target=self._listen)
         self.heartbeat_thread = threading.Thread(target=self._heartbeat)  
         self.announce_thread = threading.Thread(target=self._announce)
