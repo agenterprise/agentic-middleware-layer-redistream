@@ -1,13 +1,16 @@
 {
     "project_name": "{{ cookiecutter.project_name }}",
     "package_name": "{{ cookiecutter.project_name|lower|replace(' ', '_') }}",
-    "entity": "{{ cookiecutter.entity }",
+    "agents": "{}",
+    "llms": "{}",
+    "tools": "{}",
     "project_build_id": "{{ cookiecutter.project_build_id }}",
     "_extensions": [
-        "local_extensions.AIURNExtension", "cookiecutter.extensions.SlugifyExtension"],
-     "_copy_without_render": [
+        "local_extensions.AIURNExtension"],
+     "_copy_without_render": [       
     ],
-     "layerversion": "0.0.1",
+    "dsl_file": "",
+    "layerversion": "0.0.1",
      "layername": "middleware"
 
 }
